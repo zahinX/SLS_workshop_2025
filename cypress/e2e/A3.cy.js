@@ -9,7 +9,7 @@ const utls = new Utils()
  * @author Zahin Ahad
 */
 
-describe('Sample', () => {
+describe('ipex Case Center - Dev', () => {
     
     before(() => {
         login.clearAllStorage()
@@ -20,16 +20,18 @@ describe('Sample', () => {
 
     context('Login and logo verification', () => {
 
+        it('Verify login page URL', () => {
+            login.verifyPartialLoginUrl() // uses include
+            login.verifyLoginPageHeader() // uses contains
+            login.verifyLoginPageTitle() // verifies title
+        })
+
         it('Verify login', () => {
             login.typeEmail()
             // login.typePass()
             utls.typePass(`#inputPassword`, `${Cypress.env('adminPass')}`)
             login.clickLoginBtn()
-            login.verifyUrl()
-        })
-    
-        it('Verify logo', () => {
-            logo.verifyLogoVisibility()
+            login.verifyUrl() // uses equal
         })
     })
 

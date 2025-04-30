@@ -39,7 +39,31 @@ export default class Login extends Utils{
     }
 
     /**
+     * Login header verification
+     * @returns {void}
+     */
+    verifyLoginPageHeader() {
+        this.elementContainsText('#login-form .description', 'LOGIN IPEX CASE CENTER')
+    }
+
+    /**
+     * Login page title verification
+     * @returns {void}
+     */
+    verifyLoginPageTitle() {
+        this.verifyPageTitle('IPEX Case Center | Login')
+    }
+
+    /**
      * Verifies partial URL
+     * @returns {void}
+     */
+    verifyPartialLoginUrl() {
+        this.verifyPartialUrl('login')
+    }
+
+    /**
+     * Verifies full URL
      * @returns {void}
      */
     verifyUrl() {

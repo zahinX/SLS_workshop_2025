@@ -252,6 +252,16 @@ export default class Utils{
     }
 
     /**
+     * Verifies the title of the page
+     * @param {string} titleText - The title of the page
+     * @returns {void}
+     */
+    verifyPageTitle(titleText) {
+        cy.title().should('eq', titleText)
+        this.assertionLog(`Verified URL "${titleText}"`)
+    }
+
+    /**
      * Verifies the visibility of an element
      * @param {string} selector - The selector of the element to check visibility for
      * @param {string} [elem] - An optional name of the element to include in the log message
