@@ -107,6 +107,28 @@ export default class Utils{
     }
 
     /**
+     * Clicks first button or element from many elements
+     * @param {string} text - The text of the button or element to click
+     * @returns {void}
+     */
+    clickFirstElem(locator) {
+        this.actionLog(`Clicking first element with the locator "${locator}"`)
+        cy.get(locator).first().click()
+        this.actionLog(`Clicked on first element`)
+    }
+
+    /**
+     * Clicks last button or element from many elements
+     * @param {string} text - The text of the button or element to click
+     * @returns {void}
+     */
+    clickLastElem(locator) {
+        this.actionLog(`Clicking last element with the locator "${locator}"`)
+        cy.get(locator).last().click()
+        this.actionLog(`Clicked on last element`)
+    }
+
+    /**
      * Intercepts a network request.
      * @param {string} method - The HTTP method (e.g., 'POST')
      * @param {string} urlPattern - The URL pattern to intercept
@@ -277,6 +299,49 @@ export default class Utils{
     }
 
     /**
+     * Verifies the visibility of the first of multiple elements
+     * @param {string} selector - The selector of the element to check visibility for
+     * @param {string} [elem] - An optional name of the element to include in the log message
+     * @returns {void}
+     */
+    firstElementIsVisible(selector, elem='') {
+        cy.get(selector).first().should('be.visible')
+        if(elem==''){
+            this.assertionLog(`Element is visible`)
+        } else {
+            this.assertionLog(`First element of "${elem}" is visible`)
+        }
+    }
+
+    /**
+     * Verifies the visibility of the last of multiple elements
+     * @param {string} selector - The selector of the element to check visibility for
+     * @param {string} [elem] - An optional name of the element to include in the log message
+     * @returns {void}
+     */
+    lastElementIsVisible(selector, elem='') {
+        cy.get(selector).last().should('be.visible')
+        if(elem==''){
+            this.assertionLog(`Element is visible`)
+        } else {
+            this.assertionLog(`Last element of "${elem}" is visible`)
+        }
+    }
+
+    /**
+     * Verifies the visibility of each element
+     * @param {string} selector - The selector of elements to check visibility for
+     * @returns {void}
+     */
+    eachElementIsVisible(selector) {
+        cy.get(selector).each( el => 
+            cy.wrap(el).should('be.visible').then( el => 
+                this.assertionLog(`Element containing "${el.text()}" is visible`)
+            )
+        )
+    }
+
+    /**
      * Verifies the visibility of an element using its data-test-id attribute
      * @param {string} testId - The data-test-id of the element to check visibility for
      * @param {string} [elem] - An optional name of the element to include in the log message
@@ -388,6 +453,33 @@ export default class Utils{
     }
 
     /**
+     * Get an elements by its selector
+     * @param {string} selector - The CSS selector of the element
+     * @returns {Cypress.Chainable<HTMLElement>} The element with the specified data-test-id
+     */
+    getElement(selector) {
+        return cy.get(selector)
+    }
+
+    /**
+     * Get first of many elements by data-test-id
+     * @param {string} selector - The CSS selector of the element
+     * @returns {Cypress.Chainable<HTMLElement>} The element with the specified data-test-id
+     */
+    getFirstElement(selector) {
+        return cy.get(selector).first()
+    }
+
+    /**
+     * Get last of many elements by data-test-id
+     * @param {string} selector - The CSS selector of the element
+     * @returns {Cypress.Chainable<HTMLElement>} The element with the specified data-test-id
+     */
+    getLastElement(selector) {
+        return cy.get(selector).last()
+    }
+
+    /**
      * Verifies that an element's text matches the specified text exactly
      * @param {string} selector - The CSS selector of the element
      * @param {string} expectedText - The exact text to verify within the element
@@ -450,7 +542,8 @@ export default class Utils{
      */
     selectDropdownByText(selector, optionText) {
         this.actionLog(`Selecting "${optionText}" from dropdown`)
-        cy.get(selector).select(optionText)
+        cy.get(selector).select(optionText).should('have.value', optionText)
+        this.assertionLog(`"${optionValue}" selected from the dropdown`)
     }
 
     /**
@@ -461,7 +554,8 @@ export default class Utils{
      */
     selectDropdownByValue(selector, optionValue) {
         this.actionLog(`Selecting option with value "${optionValue}"`)
-        cy.get(selector).select(optionValue)
+        cy.get(selector).select(optionValue).should('have.value', optionText)
+        this.assertionLog(`"${optionValue}" selected from the dropdown`)
     }
     
     /**
@@ -472,7 +566,8 @@ export default class Utils{
      */
     selectDropdownByTestId(testId, optionValue) {
         this.actionLog(`Selecting option with value "${optionValue}" from dropdown with data-test-id "${testId}"`)
-        cy.get(`[data-test-id="${testId}"]`).select(optionValue)
+        cy.get(`[data-test-id="${testId}"]`).select(optionValue).should('have.value', optionText)
+        this.assertionLog(`"${optionValue}" selected from the dropdown`)
     }
 
     /**
