@@ -25,9 +25,10 @@ module.exports = defineConfig({
       require('cypress-mochawesome-reporter/plugin')(on);
     },
     env:{
-      baseUrl : "https://upload-ipex.seliselocal.com",
-      adminUser: "ztest.01@yopmail.com",
-      adminPass: "Test@001"
+      // baseUrl : "https://upload-ipex.seliselocal.com",
+      // adminUser: "ztest.01@yopmail.com",
+      // adminPass: "Test@001"
+      baseUrl : "https://tutorialsninja.com/demo/"
     }
   }
 });
