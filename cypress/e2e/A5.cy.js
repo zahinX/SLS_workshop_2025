@@ -28,13 +28,9 @@ describe('Actions & Assertions', () => {
             cy.get('#wednesday').should('be.checked')
             utls.selectDropdownByValue('#country', 'Japan')
         })
-
-        // it('Base URL visit', () => {})
-
-        // it('Login', () => {})
+    })
     
     after(() => {})
     
     afterEach(() => {})
-    })
 })

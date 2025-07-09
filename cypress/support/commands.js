@@ -25,3 +25,9 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import 'cypress-iframe'
 import '@4tw/cypress-drag-drop'
+
+Cypress.Commands.add('loginOCRM', (username = 'Admin', password = 'admin123') => {
+  cy.get('[name="username"]').type(username)
+  cy.get('[name="password"]').type(password)
+  cy.get('[type="submit"]').click()
+})

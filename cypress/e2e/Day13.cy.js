@@ -16,12 +16,15 @@ describe('Auth', () => {
 
     context('Auth', () => {
 
-        it.skip('Authenticated Prompt', () => {
+        it('Authenticated Prompt 1', () => {
             utls.visitPage('https://admin:admin@the-internet.herokuapp.com/javascript_alerts')
-            // utls.visitPage('https://the-internet.herokuapp.com/javascript_alerts', {auth : {
-            //     username: 'admin',
-            //     password: 'admin'
-            // }})
+        })
+
+        it('Authenticated Prompt 2', () => {
+            utls.visitPage('https://the-internet.herokuapp.com/javascript_alerts', {auth : {
+                username: 'admin',
+                password: 'admin'
+            }})
         })
 
         it.skip('Base URL visit', () => {
@@ -35,10 +38,11 @@ describe('Auth', () => {
             utls.clickButtonByLocator('.btn')
             utls.clickButtonByLocator(':nth-child(3) > .tile > .tile-footer > a')
             cy.get('thead > tr > td').should('have.length', 10)
+            cy.get('#form-customer tr:nth-child(4) > td:nth-child(3)').should('have.text', 'test1@test.com')
         })
+    })
     
     after(() => {})
     
     afterEach(() => {})
-    })
 })

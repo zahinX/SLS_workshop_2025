@@ -68,13 +68,6 @@ describe('iFrame', () => {
             utls.elementContainsText('#result', `You entered: ${txt}`)
         })
     })
-
-    // context('Test Block 2', () => {
-
-    //     it('Test Case 3', () => {})
-
-    //     it('Test Case 4', () => {})
-    // })
     
     after(() => {})
     
