@@ -31,3 +31,31 @@ Cypress.Commands.add('loginOCRM', (username = 'Admin', password = 'admin123') =>
   cy.get('[name="password"]').type(password)
   cy.get('[type="submit"]').click()
 })
+
+Cypress.Commands.add('visitPage', (url) => {
+  cy.visit(url)
+})
+
+Cypress.Commands.add('typeText', (selector, text) => {
+  cy.get(selector).clear().type(text)
+})
+
+Cypress.Commands.add('checkTheBox', (selector) => {
+  cy.get(selector).check()
+})
+
+Cypress.Commands.add('verifyCheckBox', (selector) => {
+  cy.get(selector).should('be.checked')
+})
+
+Cypress.Commands.add('selectDropdownByValue', (selector, optionValue) => {
+  cy.get(selector).select(optionValue)
+})
+
+Cypress.Commands.add('clickButtonByLocator', (selector) => {
+  cy.get(selector).click()
+})
+
+Cypress.Commands.add('elementContainsText', (selector, text) => {
+  cy.get(selector).should('contain', text)
+})

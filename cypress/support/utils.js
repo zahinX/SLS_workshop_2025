@@ -554,7 +554,7 @@ export default class Utils{
      */
     selectDropdownByValue(selector, optionValue) {
         this.actionLog(`Selecting option with value "${optionValue}"`)
-        cy.get(selector).select(optionValue).should('have.value', optionText)
+        cy.get(selector).select(optionValue).should('have.value', optionValue)
         this.assertionLog(`"${optionValue}" selected from the dropdown`)
     }
     
