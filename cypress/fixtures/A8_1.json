@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Admin1",
+    "password": "admin123",
+    "invald": "Invalid credentials"
+  },
+  {
+    "name": "Admin",
+    "password": "admin1234",
+    "dashboard": "Invalid credentials"
+  },
+  {
+    "name": "Admin",
+    "password": "admin123",
+    "dashboard": "Dashboard"
+  }
+]
