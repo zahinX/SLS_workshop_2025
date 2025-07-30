@@ -1,17 +1,17 @@
 [
   {
     "name": "Admin1",
-    "password": "admin123",
-    "invald": "Invalid credentials"
+    "pass": "admin123",
+    "invalid": "Invalid credentials"
   },
   {
     "name": "Admin",
-    "password": "admin1234",
-    "dashboard": "Invalid credentials"
+    "pass": "admin1234",
+    "invalid": "Invalid credentials"
   },
   {
     "name": "Admin",
-    "password": "admin123",
-    "dashboard": "Dashboard"
+    "pass": "admin123",
+    "valid": "Dashboard"
   }
 ]

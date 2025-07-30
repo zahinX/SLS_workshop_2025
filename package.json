@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "cypress": "^13.13.2",
+    "cypress-file-upload": "^5.0.8",
     "cypress-mochawesome-reporter": "^3.8.2",
     "cypress-parallel": "^0.14.0",
     "playwright-webkit": "^1.45.3"
